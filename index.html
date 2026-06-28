@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,33 +7,54 @@
     <link rel="stylesheet" href="style.css">
     <script src="scripts/word-list.js" defer></script>
     <script src="scripts/script.js" defer></script>
-</head>    
+</head>
 <body>
+    <!-- Level Selection Screen -->
+    <div class="level-screen">
+        <div class="level-content">
+            <h2>Level-mu apa bos?</h2>
+            <p>Seberapa jago kamu?</p>
+            <div class="level-buttons">
+                <button class="level-btn newbie-btn" data-level="newbie">
+                    🟢 Newbie
+                    <span>Kata pendek & mudah</span>
+                </button>
+                <button class="level-btn middle-btn" data-level="middle">
+                    🟡 Middle
+                    <span>Kata lebih panjang</span>
+                </button>
+                <button class="level-btn godtier-btn" data-level="godtier">
+                    🔴 GOD TIER
+                    <span>Kata-katanya susah banget!</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Over Modal -->
     <div class="game-modal">
         <div class="content">
             <img src="images/lost.gif" alt="gif">
             <h4>Kamu Kalah!!</h4>
-            <p>Yang bener: 
-                <b>buah-buahan</b>
-            </p>
+            <p>Yang bener: <b>kata</b></p>
             <button class="play-again">Main lagi?</button>
         </div>
     </div>
+
+    <!-- Main Game -->
     <div class="container">
         <div class="hangman-box">
             <img src="images/hangman-0.svg" alt="hangman-img">
             <h1>Game Hangman</h1>
         </div>
         <div class="game-box">
+            <div class="level-info">
+                <span class="level-label">🟢 Newbie</span>
+                <button class="change-level">Ganti Level</button>
+            </div>
             <ul class="word-display"></ul>
-            <h4 class="hint-text">
-                Clue-nya:
-                <b>Buah apa yang paling manis?</b>
-            </h4>
-            <h4 class="guesses-text">
-                Salah:
-                <b>0 / 6</b>
-            </h4>
+            <h4 class="hint-text">Clue-nya: <b>...</b></h4>
+            <h4 class="guesses-text">Salah: <b>0 / 6</b></h4>
             <div class="keyboard"></div>
         </div>
     </div>

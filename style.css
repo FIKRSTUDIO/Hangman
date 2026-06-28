@@ -1,4 +1,3 @@
-/* Importing Google font - Open Sans */
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
 * {
     margin: 0;
@@ -14,14 +13,119 @@ body {
     min-height: 100vh;
     background: #000080;
 }
+
+/* ── LEVEL SELECTION SCREEN ── */
+.level-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.75);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+.level-screen.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+.level-content {
+    background: #fff;
+    border-radius: 16px;
+    padding: 40px 36px;
+    text-align: center;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+.level-content h2 {
+    font-size: 1.8rem;
+    color: #000080;
+    margin-bottom: 6px;
+}
+.level-content > p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 28px;
+}
+.level-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.level-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    cursor: pointer;
+    color: #fff;
+    transition: transform 0.15s, filter 0.15s;
+}
+.level-btn span {
+    font-size: 0.78rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+.level-btn:hover {
+    transform: scale(1.03);
+    filter: brightness(1.1);
+}
+.newbie-btn  { background: #2e7d32; }
+.middle-btn  { background: #f57f17; }
+.godtier-btn { background: #c62828; }
+
+/* ── LEVEL INFO BAR ── */
+.level-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #e0e0e0;
+}
+.level-label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #000080;
+}
+.change-level {
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 5px 12px;
+    border: 2px solid #000080;
+    border-radius: 20px;
+    background: transparent;
+    color: #000080;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.change-level:hover {
+    background: #000080;
+    color: #fff;
+}
+
+/* ── MAIN CONTAINER ── */
 .container {
     width: 850px;
     background: #fff;
     display: flex;
     gap: 70px;
-    align-items: flex-end;
+    align-items: flex-start;
     padding: 60px 40px;
     border-radius: 10px;
+}
+.game-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 .hangman-box img {
     max-width: 270px;
@@ -38,6 +142,7 @@ body {
     list-style: none;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 .word-display .letter {
     width: 28px;
@@ -63,7 +168,7 @@ body {
 }
 .game-box .guesses-text b {
     color: #ff0000;
-} 
+}
 .game-box .keyboard {
     display: flex;
     gap: 5px;
@@ -93,10 +198,12 @@ body {
 :where(.game-modal, .keyboard) button:hover {
     background: #4d4d99;
 }
+
+/* ── GAME OVER MODAL ── */
 .game-modal {
     position: fixed;
-    left: 0%;
-    top:0%;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     opacity: 0;
@@ -105,7 +212,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
     transition: opacity 0.4s ease;
 }
 .game-modal.show {
@@ -129,27 +236,33 @@ body {
 }
 .game-modal p {
     font-size: 1.15rem;
-    margin: 15px 0 30px;
+    margin: 15px 0 20px;
     font-weight: 500;
 }
 .game-modal p b {
     color: #000080;
     font-weight: 600;
 }
+.game-modal .modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
 .game-modal button {
     padding: 12px 23px;
+    border-radius: 6px;
 }
 
 @media (max-width: 782px) {
     .container {
-    flex-direction: column;    
-    align-items: center;
-    padding: 30px 15px;
-}
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 15px;
+    }
     .hangman-box img {
-    max-width: 200px;
-}
+        max-width: 200px;
+    }
     .hangman-box h1 {
-    display: none;    
-}
+        display: none;
+    }
 }
